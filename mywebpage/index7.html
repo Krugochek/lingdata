@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайтиииииииии иии и ии  и и   и      и   кккккккк</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые стили: основной текст — Helvetica */
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        /* Шапка: ссылка на Школу слева, ссылки на курс и группу справа */
+        header {
+            background-color: #1e4d2b;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        header .left a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+        header .left a:hover { text-decoration: underline; }
+        header .right { display: flex; gap: 20px; }
+        header .right a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        header .right a:hover { text-decoration: underline; }
+
+        /* Основной контент */
+        main { padding: 20px; }
+        .profile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .profile img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            border: 3px solid #1e4d2b;
+            object-fit: cover;
+        }
+        .profile-info { flex: 1; min-width: 250px; }
+
+        /* Заголовки */
+        h1, h2 {
+            font-family: 'Oswald', Helvetica, Arial, sans-serif;
+            color: #1e4d2b;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        h1 { margin-top: 0; font-size: 2.2em; }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+            margin-top: 35px;
+        }
+
+        /* Ссылки в тексте */
+        a { color: #2e7d32; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .highlight {
+            background-color: #f1c40f;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        em { font-style: italic; color: #555; }
+        strong { font-weight: bold; color: #1e4d2b; }
+
+        /* ===== Переключатель списков ===== */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            font-family: 'Oswald', Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            font-size: 0.95em;
+            padding: 10px 22px;
+            border: 2px solid #1e4d2b;
+            background: transparent;
+            color: #1e4d2b;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tab-btn:hover { background: #eaf3ec; }
+        .tab-btn.active {
+            background: #1e4d2b;
+            color: #ffffff;
+        }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* Карточка: фото + заголовок + абзац */
+        .card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 18px;
+            border: 1px solid #ecf0f1;
+            border-radius: 10px;
+            background: #fdfdfd;
+            margin-bottom: 15px;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover { box-shadow: 0 4px 14px rgba(30,77,43,0.08); }
+        .card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            border: 2px solid #1e4d2b;
+        }
+        .card-text { flex: 1; min-width: 0; }
+        .card-text h3 {
+            font-family: 'Oswald', Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-weight: 500;
+            color: #1e4d2b;
+            font-size: 1.1em;
+            margin: 0 0 8px 0;
+        }
+        .card-text p { margin: 0; }
+
+        /* Мелкие ссылки внизу страницы */
+        footer {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+        footer a { color: #2e7d32; margin-right: 15px; }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            header { flex-direction: column; text-align: center; }
+            header .right { justify-content: center; flex-wrap: wrap; }
+            .profile { flex-direction: column; align-items: center; text-align: center; }
+            .profile img { width: 150px; }
+            h1 { font-size: 1.8em; }
+            .card { flex-direction: column; align-items: center; text-align: center; }
+            .card img { width: 100%; max-width: 220px; height: auto; }
+            footer { text-align: center; }
+            footer a { display: inline-block; margin: 3px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header>
+            <div class="left">
+                <a href="https://ling.hse.ru/" target="_blank">Школа лингвистики</a>
+            </div>
+            <div class="right">
+                <a href="https://lingvocodes.github.io/HSEinfo/ba-ling-2026/index.html" target="_blank">Ссылка на курс</a>
+                <a href="https://lingvocodes.github.io/HSEinfo/ba-ling-2026/baling_262.html" target="_blank">Группа 262</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Блок с фотографией и именем -->
+            <section class="profile">
+                <img src="myphoto.jpg" alt="Я">
+                <div class="profile-info">
+                    <h1>Артём Джалалян</h1>
+                    <p>
+                        <strong>Родной город:</strong> Москва!!!<br>
+                        <strong>Школа:</strong> была <br>
+                        <strong>Почта:</strong> aldzhalalian@edu.hse.ru
+                    </p>
+                    <p>
+                        <em>Студент 1 курса образовательной программы «Фундаментальная и прикладная лингвистика» НИУ ВШЭ.</em>
+                    </p>
+                    <p>
+                        <strong>Соцсети:</strong>
+                        <a href="https://t.me/ghuesswtgd" target="_blank">Telegram</a> ·
+                        <a href="https://github.com/Krugochek" target="_blank">GitHub</a> ·
+                        <a href="Не ссылка">Всё</a>
+
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Обо мне</h2>
+                <p>
+                    Привет! Меня зовут Артём и я поступил на платку этого прекрасного факультета.  
+                    Раньше я учился в этом же здании на Физике, а теперь радикально поменял направление. Люблю спать, пить пиво, ездить в Китай и кататься на машине. Из за первого и пропустил первые пары,
+                     извините пожалуйста :(
+                </p>
+                <p>
+                    В задании сказано написать больше одного абзаца, а я не умею писать о себе много. Для решения этой проблемы было создано то, что вы видите снизу,
+                     там много всяких абзацев о разных вещах на счет некоторых из которых у меня таки есть мнение.
+                </p>
+            </section>
+
+            <!-- ===== Секция с переключателем двух списков ===== -->
+            <section>
+                <h2>Списки списки</h2>
+
+                <!-- Кнопки-вкладки -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="list-1">Топ 3 телефонов</button>
+                    <button class="tab-btn" data-target="list-2">Топ 3 дошираков</button>
+                </div>
+
+                <!-- Первый список -->
+                <div class="tab-panel active" id="list-1">
+                    <article class="card">
+                        <div class="card-text">
+                            <h3>3. Google Pixel 7</h3>
+                            <p>
+                                У меня таких было как минимум 3. Почему 3? Потому что его ОЧЕНЬ легко разбить. Упал с высоты плеча на пол экраном вниз - можете начинать беспокоиться. 
+                                Ещё он тяжелый, толстый и красивая обводка блока камер не помогает. Зато в рамках нормального использования вопросов к нему никаких нет. Не тормозит, всего 
+                                достаточно, вообще идеальный телефон для любого кто не роняет его каждые 5 минут.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-text">
+                            <h3>2. Xiaomi MI 9 SE</h3>
+                            <p>
+                                Для меня скорее воспоминание из детства. По размеру как маленькие айфоны но тоньше. Очень красивая сине-фиолетовая задняя крышка. 
+                                Больше про него сказать ничего нельзя, как наверное и использовать в 2026.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-text">
+                            <h3>1. Xiaomi MI 11 lite</h3>
+                            <p>
+                                Дольше этого чуда не использовал наверное вообще ничего. Тонкий, легкий, чинится запчастями по 200 рублей если открутить 2 винтика, сам стоит не сильно дороже запчастей. 
+                                Конечно недостаточно устаревший чтоб его нельзя было использовать, но старый полуфлагман Xiaomi подойдет не всем, терпеть долгие открывания приложений и перепрошивать 
+                                мусорными прошивками с 4pda придётся.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Второй список -->
+                <div class="tab-panel" id="list-2">
+                    <article class="card">
+                        <div class="card-text">
+                            <h3>3. Доширак красный</h3>
+                            <p>
+                                Стандарт. 
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-text">
+                            <h3>2. Доширак зеленый</h3>
+                            <p>
+                                Чуть менее стандарт, но всё ещё везде есть. Если вы зачем-то собрались съесть два, покупайте его. Как тонкие сигареты, как влажные салфетки без спирка, как шариковая ручка,
+                                 выбор рационального человека.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-text">
+                            <h3>1. Доширак дешевый</h3>
+                            <p>
+                                Это даже не доширак на самом деле. Самое дешевое что продают в КБ у дома. На упаковке написано что со вкусом Том-Яма, но я никогда его не заваривал. 
+                                Полезен только как самая дешевая лапша. Сварили суп или бульон или компот там, можете достать из пачки и кинуть в тарелку. Где ещё найти квадрат лапши за 19 рублей?
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- Мелкие ссылки внизу страницы -->
+        <footer>
+            <a href="https://ling.hse.ru/" target="_blank">Школа лингвистики НИУ ВШЭ</a>
+            <a href="https://lingvocodes.github.io/HSEinfo/ba-ling-2026/index.html" target="_blank">Страница курса</a>
+            <a href="https://lingvocodes.github.io/HSEinfo/ba-ling-2026/baling_262.html" target="_blank">Группа 262</a>
+            Сделано дипсиком c моей помощью
+        </footer>
+    </div>
+
+    <!-- Скрипт переключения вкладок -->
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.tab-btn').forEach(function (b) {
+                    b.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-panel').forEach(function (p) {
+                    p.classList.remove('active');
+                });
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
